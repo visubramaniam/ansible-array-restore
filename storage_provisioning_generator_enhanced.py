@@ -474,23 +474,23 @@ class StorageProvisioningGenerator:
     ####################################################################
     - name: Create All LDEVs from storage facts
       hitachivantara.vspone_block.vsp.hv_ldev:
-        connection_info: "{{ connection_info }}"
+        connection_info: "{{{{ connection_info }}}}"
         state: present
         spec:
-          pool_id: "{{ item.pool_id }}"
-          size: "{{ item.size }}"
-          name: "{{ item.name }}"
+          pool_id: "{{{{ item.pool_id }}}}"
+          size: "{{{{ item.size }}}}"
+          name: "{{{{ item.name }}}}"
       register: ldev_result
-      loop: "{{ ldev_config }}"
+      loop: "{{{{ ldev_config }}}}"
       loop_control:
-        label: "LDEV {{ item.ldev_id }}: {{ item.name }}"
+        label: "LDEV {{{{ item.ldev_id }}}}: {{{{ item.name }}}}"
       tags:
         - ldev
         - always
 
     - name: Collect LDEV creation results
       ansible.builtin.set_fact:
-        created_ldevs: "{{ ldev_result.results | map(attribute='item') | list }}"
+        created_ldevs: "{{{{ ldev_result.results | map(attribute='item') | list }}}}"
       when: ldev_result is succeeded
 
     ####################################################################
@@ -498,23 +498,23 @@ class StorageProvisioningGenerator:
     ####################################################################
     - name: Create All Hostgroups from storage facts
       hitachivantara.vspone_block.vsp.hv_hg:
-        connection_info: "{{ connection_info }}"
+        connection_info: "{{{{ connection_info }}}}"
         state: present
         spec:
-          name: "{{ item.name }}"
-          port: "{{ item.port }}"
-          host_mode: "{{ item.host_mode }}"
+          name: "{{{{ item.name }}}}"
+          port: "{{{{ item.port }}}}"
+          host_mode: "{{{{ item.host_mode }}}}"
       register: hostgroup_result
-      loop: "{{ hostgroup_config }}"
+      loop: "{{{{ hostgroup_config }}}}"
       loop_control:
-        label: "HG {{ item.hg_id }}: {{ item.name }} on {{ item.port }}"
+        label: "HG {{{{ item.hg_id }}}}: {{{{ item.name }}}} on {{{{ item.port }}}}"
       tags:
         - hostgroup
         - always
 
     - name: Collect Hostgroup creation results
       ansible.builtin.set_fact:
-        created_hostgroups: "{{ hostgroup_result.results | map(attribute='item') | list }}"
+        created_hostgroups: "{{{{ hostgroup_result.results | map(attribute='item') | list }}}}"
       when: hostgroup_result is succeeded
 
     ####################################################################
@@ -522,17 +522,17 @@ class StorageProvisioningGenerator:
     ####################################################################
     - name: Provision LDEVs to Hostgroups
       hitachivantara.vspone_block.vsp.hv_hg:
-        connection_info: "{{ connection_info }}"
+        connection_info: "{{{{ connection_info }}}}"
         state: present
         spec:
           state: present_ldev
-          name: "{{ item.hostgroup_name }}"
-          port: "{{ item.port }}"
-          ldevs: ["{{ item.ldev_id }}"]
+          name: "{{{{ item.hostgroup_name }}}}"
+          port: "{{{{ item.port }}}}"
+          ldevs: ["{{{{ item.ldev_id }}}}"]
       register: provision_result
-      loop: "{{ provisioning_mappings }}"
+      loop: "{{{{ provisioning_mappings }}}}"
       loop_control:
-        label: "LDEV {{ item.ldev_id }} -> {{ item.hostgroup_name }}"
+        label: "LDEV {{{{ item.ldev_id }}}} -> {{{{ item.hostgroup_name }}}}"
       tags:
         - provision
         - always
@@ -545,14 +545,14 @@ class StorageProvisioningGenerator:
           ║           STORAGE PROVISIONING WORKFLOW COMPLETE           ║
           ╚════════════════════════════════════════════════════════════╝
           
-          ✓ LDEVs Created: {{ ldev_config | length }}
-          ✓ Hostgroups Created: {{ hostgroup_config | length }}
-          ✓ LDEV-HG Mappings: {{ provisioning_mappings | length }}
+          ✓ LDEVs Created: {{{{ ldev_config | length }}}}
+          ✓ Hostgroups Created: {{{{ hostgroup_config | length }}}}
+          ✓ LDEV-HG Mappings: {{{{ provisioning_mappings | length }}}}
           
           Execution Status:
-          - LDEV Creation: {{ ldev_result.results | selectattr('is_succeeded') | length }} successful
-          - Hostgroup Creation: {{ hostgroup_result.results | selectattr('is_succeeded') | length }} successful
-          - LDEV Provisioning: {{ provision_result.results | selectattr('is_succeeded') | length }} successful
+          - LDEV Creation: {{{{ ldev_result.results | rejectattr('failed') | length }}}} successful
+          - Hostgroup Creation: {{{{ hostgroup_result.results | rejectattr('failed') | length }}}} successful
+          - LDEV Provisioning: {{{{ provision_result.results | rejectattr('failed') | length }}}} successful
 """
         
         return playbook
