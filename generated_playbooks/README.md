@@ -104,14 +104,50 @@ ansible-playbook 05_provision_ldevs_to_hostgroup.yml \
 - `provisioning_config.port`: Storage port
 - `provisioning_config.ldev_ids`: List of LDEV IDs to provision
 
+## Input File: all_storage_facts.json
+
+These playbooks are generated from the `all_storage_facts.json` file, which contains a complete snapshot of your Hitachi VSP storage configuration including:
+- All Logical Devices (LDEVs)
+- All Hostgroups
+- Storage pools and parity groups
+- Storage ports and connectivity information
+- LDEV-to-hostgroup mappings
+
+### Generating all_storage_facts.json
+
+The input file can be generated using the **dump_vsp_config_to_json** utility:
+
+```bash
+# Clone the repository
+git clone https://github.com/visubramaniam/dump_vsp_config_to_json
+
+# Generate the storage facts JSON file
+cd dump_vsp_config_to_json
+python3 dump_vsp_config.py --storage-address 192.168.x.x --output all_storage_facts.json
+```
+
+For detailed instructions on generating `all_storage_facts.json`, refer to:
+https://github.com/visubramaniam/dump_vsp_config_to_json
+
+### Current Storage Facts
+
+This set of playbooks was generated from `all_storage_facts.json` containing:
+- **289 Logical Devices (LDEVs)**
+- **76 Hostgroups**
+- **356 LDEV-to-Hostgroup mappings**
+
 ## Prerequisites
 
-1. **Hitachi VSP One Ansible Collection**
+1. **Input File: all_storage_facts.json**
+   - Generate using the dump_vsp_config_to_json utility (see above)
+   - Place in the root directory of this project
+
+2. **Hitachi VSP One Ansible Collection**
    ```bash
    ansible-galaxy collection install hitachivantara.vspone_block
    ```
 
-2. **Vault Variables File**
+3. **Vault Variables File**
    Create `ansible_vault_vars/ansible_vault_storage_var.yml` with:
    ```yaml
    storage_address: "192.168.x.x"
@@ -119,7 +155,7 @@ ansible-playbook 05_provision_ldevs_to_hostgroup.yml \
    vault_storage_secret: "password"
    ```
 
-3. **Network Access**
+4. **Network Access**
    - Connectivity to Hitachi VSP storage management interface
 
 ## Execution Examples
