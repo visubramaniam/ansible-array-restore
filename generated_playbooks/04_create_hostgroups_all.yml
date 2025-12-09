@@ -1,0 +1,538 @@
+---
+####################################################################
+# Auto-Generated Hostgroup Creation Playbook - All Hostgroups
+# Generated: 2025-12-09 15:03:50
+# Total Hostgroups: 76
+####################################################################
+- name: Create All Hostgroups
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../ansible_vault_vars/ansible_vault_storage_var.yml
+
+  vars:
+    connection_info:
+      address: "{{ storage_address }}"
+      username: "{{ vault_storage_username }}"
+      password: "{{ vault_storage_secret }}"
+    
+    # Hostgroup Configuration extracted from all_storage_facts.json
+    hostgroup_config:
+      - hg_id: 0
+        name: "1A-G00"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Compass1_Server"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 2
+        name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VERITAS_DB_EDITION_ADV_CLUSTER', 'host_mode_option_number': 2}, {'host_mode_option': 'VERITAS_CLUSTER_SERVER', 'host_mode_option_number': 22}, {'host_mode_option': 'SUPPORT_SPC_3_PERSISTENT_RESERVATION', 'host_mode_option_number': 25}, {'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}, {'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 3
+        name: "MSSQL1"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'WS2012', 'host_mode_option_number': 73}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 4
+        name: "File38-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 5
+        name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 6
+        name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 7
+        name: "Infra-ESXi-N1-4"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 8
+        name: "Infra-ESXi-N1-1"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 9
+        name: "Infra-ESXi-N1-2"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 10
+        name: "Dale-Test"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 11
+        name: "OraVirt-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'AUTO_ASYNC_RECLAMATION_ESXI_6_5', 'host_mode_option_number': 114}]
+        wwns: []
+      - hg_id: 12
+        name: "Goose"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}]
+        wwns: []
+      - hg_id: 13
+        name: "Demo"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 14
+        name: "DemoLinux"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 15
+        name: "WindowsDemo"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 16
+        name: "VBR_VeeamServer"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VERITAS_DB_EDITION_ADV_CLUSTER', 'host_mode_option_number': 2}, {'host_mode_option': 'VERITAS_CLUSTER_SERVER', 'host_mode_option_number': 22}, {'host_mode_option': 'SUPPORT_SPC_3_PERSISTENT_RESERVATION', 'host_mode_option_number': 25}, {'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}, {'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 17
+        name: "VBR_Veeam-Linux-Proxy"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 18
+        name: "DummyServer"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 19
+        name: "DummyDemo"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 20
+        name: "William"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 21
+        name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 22
+        name: "rhel01"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 23
+        name: "Proxmox-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'AUTO_ASYNC_RECLAMATION_ESXI_6_5', 'host_mode_option_number': 114}]
+        wwns: []
+      - hg_id: 24
+        name: "VSP360DPTEST"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 25
+        name: "Phoenix-Linux-1"
+        port: "CL1-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 26
+        name: "Compass_Server2"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 27
+        name: "Fake-Server"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 0
+        name: "2A-G00"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Compass1_Server"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 2
+        name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}, {'host_mode_option': 'AUTO_ASYNC_RECLAMATION_ESXI_6_5', 'host_mode_option_number': 114}, {'host_mode_option': '', 'host_mode_option_number': 135}]
+        wwns: []
+      - hg_id: 3
+        name: "MSSQL1"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'WS2012', 'host_mode_option_number': 73}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 4
+        name: "File38-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 5
+        name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 6
+        name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 7
+        name: "Infra-ESXi-N1-4"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 8
+        name: "Infra-ESXi-N1-3"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 9
+        name: "Infra-ESXi-N1-2"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 10
+        name: "Dale-Test"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 11
+        name: "OraVirt-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'AUTO_ASYNC_RECLAMATION_ESXI_6_5', 'host_mode_option_number': 114}]
+        wwns: []
+      - hg_id: 12
+        name: "Goose"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}]
+        wwns: []
+      - hg_id: 13
+        name: "Demo"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 14
+        name: "DemoLinux"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 15
+        name: "WindowsDemo"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 16
+        name: "VBR_VeeamServer"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VERITAS_DB_EDITION_ADV_CLUSTER', 'host_mode_option_number': 2}, {'host_mode_option': 'VERITAS_CLUSTER_SERVER', 'host_mode_option_number': 22}, {'host_mode_option': 'SUPPORT_SPC_3_PERSISTENT_RESERVATION', 'host_mode_option_number': 25}, {'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}, {'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 17
+        name: "VBR_Veeam-Linux-Proxy"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 18
+        name: "DummyServer"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 19
+        name: "DummyDemo"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 20
+        name: "William"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 21
+        name: "rhel01"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 22
+        name: "Proxmox-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'AUTO_ASYNC_RECLAMATION_ESXI_6_5', 'host_mode_option_number': 114}]
+        wwns: []
+      - hg_id: 23
+        name: "Phoenix-Linux-1"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 24
+        name: "VSP360DPTEST"
+        port: "CL2-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 25
+        name: "Compass_Server2"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 0
+        name: "3A-G00"
+        port: "CL3-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Infra-ESXi-N1-1"
+        port: "CL3-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 6
+        name: "VBR_DC1-ESXi-Cluster"
+        port: "CL3-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VERITAS_DB_EDITION_ADV_CLUSTER', 'host_mode_option_number': 2}, {'host_mode_option': 'VERITAS_CLUSTER_SERVER', 'host_mode_option_number': 22}, {'host_mode_option': 'SUPPORT_SPC_3_PERSISTENT_RESERVATION', 'host_mode_option_number': 25}, {'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}, {'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 0
+        name: "4A-G00"
+        port: "CL4-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "VBR_DC1-ESXi-Cluster"
+        port: "CL4-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VERITAS_DB_EDITION_ADV_CLUSTER', 'host_mode_option_number': 2}, {'host_mode_option': 'VERITAS_CLUSTER_SERVER', 'host_mode_option_number': 22}, {'host_mode_option': 'SUPPORT_SPC_3_PERSISTENT_RESERVATION', 'host_mode_option_number': 25}, {'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}, {'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'DISABLE_IO_WAIT_FOR_OPEN_STACK', 'host_mode_option_number': 91}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 2
+        name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 0
+        name: "5A-G00"
+        port: "CL5-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Infra-ESXi-N1-NEW"
+        port: "CL5-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 2
+        name: "linux_gad@DC1"
+        port: "CL5-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+      - hg_id: 3
+        name: "linux_gad@DC2"
+        port: "CL5-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+      - hg_id: 7
+        name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL5-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 0
+        name: "6A-G00"
+        port: "CL6-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Infra-ESXi-N1-NEW"
+        port: "CL6-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}, {'host_mode_option': 'ODX_SUPPORT_WIN2012', 'host_mode_option_number': 110}]
+        wwns: []
+      - hg_id: 2
+        name: "linux_gad@DC1"
+        port: "CL6-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+      - hg_id: 3
+        name: "linux_gad@DC2"
+        port: "CL6-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+      - hg_id: 7
+        name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL6-A"
+        host_mode: "VMWARE_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'EXTENDED_COPY', 'host_mode_option_number': 54}, {'host_mode_option': 'VSTORAGE_APIS_ON_T10_STANDARDS', 'host_mode_option_number': 63}, {'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 0
+        name: "7A-G00"
+        port: "CL7-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "Dummy_Delete"
+        port: "CL7-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+      - hg_id: 2
+        name: "Temp-Migration-Server"
+        port: "CL7-A"
+        host_mode: "LINUX"
+        host_mode_options: [{'host_mode_option': 'PAGE_RECLAMATION_LINUX', 'host_mode_option_number': 68}]
+        wwns: []
+      - hg_id: 0
+        name: "8A-G00"
+        port: "CL8-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 1
+        name: "HID-DP-00"
+        port: "CL8-A"
+        host_mode: "LINUX"
+        host_mode_options: []
+        wwns: []
+      - hg_id: 2
+        name: "Dummy_Delete"
+        port: "CL8-A"
+        host_mode: "WINDOWS_EXTENSION"
+        host_mode_options: [{'host_mode_option': 'VVOL_EXPANSION', 'host_mode_option_number': 40}]
+        wwns: []
+
+  tasks:
+    ####################################################################
+    # Task: Create All Hostgroups
+    ####################################################################
+    - name: Create All Hostgroups from storage facts
+      hitachivantara.vspone_block.vsp.hv_hg:
+        connection_info: "{ connection_info }"
+        state: present
+        spec:
+          name: "{ item.name }"
+          port: "{ item.port }"
+          host_mode: "{ item.host_mode }"
+      register: hostgroup_result
+      loop: "{ hostgroup_config }"
+      loop_control:
+        label: "HG { item.hg_id }: { item.name } on { item.port }"
+      tags:
+        - hostgroup
+        - always
+
+    - name: Debug hostgroup creation results
+      ansible.builtin.debug:
+        msg: "Created Hostgroup { item.item.hg_id } - { item.item.name } on { item.item.port }"
+      loop: "{ hostgroup_result.results }"
+      loop_control:
+        label: "{ item.item.name }"
+      when: item is succeeded
+
+    ####################################################################
+    # Task: Add WWNs to Hostgroups (if any exist)
+    ####################################################################
+    - name: Add WWNs to Hostgroups
+      hitachivantara.vspone_block.vsp.hv_hg:
+        connection_info: "{ connection_info }"
+        state: present
+        spec:
+          state: add_wwn
+          name: "{ item.name }"
+          port: "{ item.port }"
+          wwns: "{ item.wwns }"
+      loop: "{ hostgroup_config }"
+      loop_control:
+        label: "{ item.name }"
+      when: 
+        - item.wwns | length > 0
+      tags:
+        - hostgroup
+        - wwn
+
+    - name: Collect created hostgroup information
+      ansible.builtin.set_fact:
+        created_hostgroups: "{ hostgroup_result.results | map(attribute='item') | list }"
+      when: hostgroup_result is succeeded
+
+  post_tasks:
+    - name: Display created hostgroups information
+      ansible.builtin.debug:
+        msg: |
+          ✓ Hostgroups Created Successfully!
+          Total Hostgroups Created: { hostgroup_config | length }

@@ -1,0 +1,3030 @@
+---
+####################################################################
+# Auto-Generated Complete Provisioning Workflow
+# Generated: 2025-12-09 15:03:50
+# LDEVs: 289, Hostgroups: 76, Mappings: 356
+####################################################################
+- name: Complete Storage Provisioning Workflow
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../ansible_vault_vars/ansible_vault_storage_var.yml
+
+  vars:
+    connection_info:
+      address: "{{ storage_address }}"
+      username: "{{ vault_storage_username }}"
+      password: "{{ vault_storage_secret }}"
+    
+    # All LDEVs from all_storage_facts.json
+    ldev_config:
+      - ldev_id: 0
+        name: "DC1-B28-B-Dummy-Vol"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 1
+        name: "CVR-MNGMT-DS"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 2
+        name: "DC1-ESXi-Cluster-Datastore"
+        size: "10.00TB"
+        pool_id: 0
+      - ldev_id: 3
+        name: "Newark-Datastore-1"
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 4
+        name: "Newark-Datastore-2"
+        size: "22.00TB"
+        pool_id: 0
+      - ldev_id: 5
+        name: "Newark-Datastore-3"
+        size: "23.00TB"
+        pool_id: 0
+      - ldev_id: 6
+        name: "SRM-Placeholder-Vol"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 7
+        name: "SRM-Vol-1-Datastore"
+        size: "151.00GB"
+        pool_id: 0
+      - ldev_id: 8
+        name: "SRM-Vol-2-Datastore"
+        size: "152.00GB"
+        pool_id: 0
+      - ldev_id: 9
+        name: "Personal-VM1-Vol"
+        size: "51.00GB"
+        pool_id: 0
+      - ldev_id: 10
+        name: "Personal-VM2-Vol"
+        size: "52.00GB"
+        pool_id: 0
+      - ldev_id: 11
+        name: "Personal-VM3-Vol"
+        size: "53.00GB"
+        pool_id: 0
+      - ldev_id: 12
+        name: "MSSQL1-Data"
+        size: "25.00GB"
+        pool_id: 0
+      - ldev_id: 13
+        name: "MSSQL1-Logs"
+        size: "15.00GB"
+        pool_id: 0
+      - ldev_id: 14
+        name: "MSSQL1-Fileshare"
+        size: "50.00GB"
+        pool_id: 0
+      - ldev_id: 15
+        name: "VDBench1-RDM-Vol"
+        size: "27.00GB"
+        pool_id: 0
+      - ldev_id: 16
+        name: "File38-Cluster-Vol1"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 17
+        name: "Fileshare-Vol1"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 18
+        name: "Fileshare-Vol2"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 19
+        name: "Fileshare-Vol3"
+        size: "13.00GB"
+        pool_id: 0
+      - ldev_id: 20
+        name: "File38-Cluster-Vol2"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 21
+        name: "File38-Cluster-Vol3"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 22
+        name: "File38-Cluster-Vol4"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 23
+        name: "File38-Cluster-Vol5"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 24
+        name: "File38-Cluster-Vol6"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 25
+        name: "File38-Cluster-Vol7"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 26
+        name: "File38-Cluster-Vol8"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 27
+        name: "File38-Cluster-Vol9"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 28
+        name: "File38-Cluster-Vol10"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 29
+        name: "File38-Cluster-Vol11"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 30
+        name: "File38-Cluster-Vol12"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 31
+        name: "File38-Cluster-Vol13"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 32
+        name: "File38-Cluster-Vol14"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 33
+        name: "File38-Cluster-Vol15"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 34
+        name: "File38-Cluster-Vol16"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 35
+        name: "HNAS-5200-Cluster-Vol1"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 36
+        name: "HNAS-5200-Cluster-Vol2"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 37
+        name: "HNAS-5200-Cluster-Vol3"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 38
+        name: "HNAS-5200-Cluster-Vol4"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 39
+        name: "HNAS-5200-Cluster-Vol5"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 40
+        name: "HNAS-5200-Cluster-Vol6"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 41
+        name: "HNAS-5200-Cluster-Vol7"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 42
+        name: "HNAS-5200-Cluster-Vol8"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 43
+        name: "HNAS-5200-Cluster-Vol9"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 44
+        name: "HNAS-5200-Cluster-Vol10"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 45
+        name: "HNAS-5200-Cluster-Vol11"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 46
+        name: "HNAS-5200-Cluster-Vol12"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 47
+        name: "HNAS-5200-Cluster-Vol13"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 48
+        name: "HNAS-5200-Cluster-Vol14"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 49
+        name: "HNAS-5200-Cluster-Vol15"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 50
+        name: "HNAS-5200-Cluster-Vol16"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 51
+        name: "DC1-DC2-B28-B-G1500-Quorum01"
+        size: "30.00GB"
+        pool_id: -1
+      - ldev_id: 52
+        name: "DC1-DC2-B28-B-G1500-Quorum"
+        size: "31.00GB"
+        pool_id: -1
+      - ldev_id: 53
+        name: "DS-GAD-Migrate"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 54
+        name: "_GADP_OraVirt-Vol"
+        size: "512.00GB"
+        pool_id: 0
+      - ldev_id: 55
+        name: "goose-swap"
+        size: "500.00GB"
+        pool_id: 0
+      - ldev_id: 56
+        name: "goose-opt-ie"
+        size: "2.00TB"
+        pool_id: 0
+      - ldev_id: 57
+        name: "DC1-B28-CST-CoreServices"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 58
+        name: "DC1-B28-CST-Baseline"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 59
+        name: "RDM-CS-Windows"
+        size: "10.00TB"
+        pool_id: 0
+      - ldev_id: 60
+        name: "RDM-CS-Windows"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 61
+        name: "RDM-CS-Linux"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 62
+        name: "_GADP_Ovirt-Direct-ASM"
+        size: "120.00GB"
+        pool_id: 0
+      - ldev_id: 63
+        name: "_GADP_Ovirt-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 64
+        name: "_GADP_Ovirt-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 65
+        name: "DC1-B28-CST-Applications"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 66
+        name: "Ventura-Datastore"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 67
+        name: "VBR_VeeamVol"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 68
+        name: "Olympia-Datastore-Vol"
+        size: "512.00GB"
+        pool_id: 0
+      - ldev_id: 69
+        name: "OraVirt-CV"
+        size: "500.00GB"
+        pool_id: 0
+      - ldev_id: 70
+        name: "Veeam-Linux-Proxy-Placeholder"
+        size: "2.00GB"
+        pool_id: 0
+      - ldev_id: 71
+        name: "External_UVM"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 72
+        name: "External_UVM"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 73
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 74
+        name: "UVM_DEMO"
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 75
+        name: ""
+        size: "10.00TB"
+        pool_id: -1
+      - ldev_id: 76
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 77
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 78
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 79
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 80
+        name: "DC1-B28-Oracle-DS"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 81
+        name: "GAD-DS-DeleteMe"
+        size: "4.00TB"
+        pool_id: 0
+      - ldev_id: 82
+        name: "DC1-ESXi-Cluster-Datastore2"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 83
+        name: "RDM-CS-Linux-1TB-Ramju"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 84
+        name: "Ovirt01-CV-LV"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 85
+        name: "Datastore_Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 86
+        name: "DC1-ESXi-Cluster-Datastore3"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 87
+        name: "DC1-ESXi-Cluster-Datastore4"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 88
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 89
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 90
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 91
+        name: "CMD-UA-DC1-B28"
+        size: "50.00MB"
+        pool_id: 0
+      - ldev_id: 92
+        name: "CMD-UA-OracleKVM"
+        size: "53.00MB"
+        pool_id: 0
+      - ldev_id: 93
+        name: "IS_SVOL_SP_2_613_314"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 94
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 95
+        name: "Demo_Automator"
+        size: "100.00MB"
+        pool_id: 11
+      - ldev_id: 96
+        name: "IS_SVOL_SP_2_616_316"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 97
+        name: "IS_SVOL_SP_2_620_318"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 98
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 99
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 100
+        name: "DeleteMeTC"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 101
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 102
+        name: "_GADP_DeleteMeGAD"
+        size: "14.00GB"
+        pool_id: 0
+      - ldev_id: 103
+        name: "TempGAD"
+        size: "2.00TB"
+        pool_id: 0
+      - ldev_id: 104
+        name: "William"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 105
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 106
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 107
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 108
+        name: "Olympia-Datastore-Vol"
+        size: "512.00GB"
+        pool_id: 0
+      - ldev_id: 109
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 110
+        name: "WindowsDemoVol"
+        size: "15.00GB"
+        pool_id: 0
+      - ldev_id: 111
+        name: "JNL-1"
+        size: "25.00GB"
+        pool_id: 0
+      - ldev_id: 112
+        name: ""
+        size: "25.00GB"
+        pool_id: 0
+      - ldev_id: 113
+        name: "IS_SVOL_SP_2_564_294"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 114
+        name: "TCDEMO"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 115
+        name: "IS_SVOL_SP_2_573_302"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 116
+        name: "IS_SVOL_SP_2_578_308"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 117
+        name: "IS_SVOL_SP_2_581_310"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 118
+        name: "IS_SVOL_SP_2_600_312"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 119
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 120
+        name: "Proxmox-Cluster-Vol1"
+        size: "4.00TB"
+        pool_id: 0
+      - ldev_id: 121
+        name: "Proxmox-Cluster-Vol2"
+        size: "5.00TB"
+        pool_id: 0
+      - ldev_id: 122
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 123
+        name: "Demo"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 124
+        name: "TCDEMO"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 125
+        name: "123"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 126
+        name: "Compass2-Vol1"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 127
+        name: "Proxmox-Cluster-Vol3"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 128
+        name: ""
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 129
+        name: "TCDEMO"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 130
+        name: "MHICKEY_TEST_10-09-25"
+        size: "5.00GB"
+        pool_id: 0
+      - ldev_id: 131
+        name: "Phoenix-Vol-1"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 132
+        name: ""
+        size: "25.00GB"
+        pool_id: 0
+      - ldev_id: 133
+        name: "Demo_Automator"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 134
+        name: ""
+        size: "2.00GB"
+        pool_id: 0
+      - ldev_id: 135
+        name: "OracleASMVM"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 136
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 137
+        name: "AB-CS-Win1"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 138
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 139
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 140
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 141
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 142
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 143
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 144
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 145
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 146
+        name: "DeleteMe"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 147
+        name: "VirtLun"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 148
+        name: "Compass2-Vol2"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 149
+        name: "Fileshare-Vol2"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 150
+        name: "Fileshare-Vol3"
+        size: "13.00GB"
+        pool_id: 0
+      - ldev_id: 151
+        name: "Fileshare-Vol1"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 152
+        name: "Fileshare-Vol1"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 153
+        name: "Fileshare-Vol2"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 154
+        name: "Fileshare-Vol3"
+        size: "13.00GB"
+        pool_id: 0
+      - ldev_id: 155
+        name: "Compass2-Vol3"
+        size: "14.00GB"
+        pool_id: 0
+      - ldev_id: 156
+        name: "Compass2-Vol1-SVOL"
+        size: "10.00GB"
+        pool_id: 11
+      - ldev_id: 157
+        name: "Compass2-Vol2-SVOL"
+        size: "12.00GB"
+        pool_id: 11
+      - ldev_id: 158
+        name: "Compass2-Vol3-SVOL"
+        size: "14.00GB"
+        pool_id: 11
+      - ldev_id: 164
+        name: "TestVolume"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 165
+        name: "NewVolume"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 200
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 344
+        name: ""
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 2000
+        name: "CS_VM_Baseline"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 2001
+        name: "CS_VM_Apps"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 2577
+        name: "CS_Newark-VM-Data"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 2578
+        name: "CS_Newark-VM-Data"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 2579
+        name: "CS_Newark-VM-Data"
+        size: "13.00GB"
+        pool_id: 0
+      - ldev_id: 4000
+        name: "CVR52_SNAP_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 4001
+        name: "CVR57_SNAP_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 4002
+        name: "CVR59_SNAP_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 4003
+        name: "CVR60_SNAP_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 4004
+        name: "CVR60_SnS_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 4096
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 4155
+        name: "CS_Windows"
+        size: "10.00TB"
+        pool_id: 0
+      - ldev_id: 4157
+        name: "CS_LinuxTest1"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 4173
+        name: "CS_OracleASMDB31G"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 4201
+        name: "CS_DummyServer"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 4231
+        name: "CS_OracleFS"
+        size: "20.00GB"
+        pool_id: 0
+      - ldev_id: 4352
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 4407
+        name: "CS_AB-CS-Win1-S"
+        size: "11.00GB"
+        pool_id: 0
+      - ldev_id: 4608
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 4864
+        name: ""
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 5000
+        name: "CVR29SNAP_65"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 5001
+        name: "CVR29SnS_65_5000"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 5002
+        name: "CVR29SNAP_5"
+        size: "23.00TB"
+        pool_id: 0
+      - ldev_id: 5003
+        name: "CVR29SnS_5_5002"
+        size: "23.00TB"
+        pool_id: 0
+      - ldev_id: 5004
+        name: "CVR29SNAP_3"
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 5005
+        name: "CVR29SnS_3_5004"
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 5006
+        name: "CVR29SNAP_4"
+        size: "22.00TB"
+        pool_id: 0
+      - ldev_id: 5007
+        name: "CVR29SnS_4_5006"
+        size: "22.00TB"
+        pool_id: 0
+      - ldev_id: 5008
+        name: "CVR29SNAP_58"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 5009
+        name: "CVR29SnS_58_5008"
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 7936
+        name: "VSM-888888-Dummy-Vol"
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 7937
+        name: "Demo"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 8192
+        name: "linux_hur_2000"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 8193
+        name: "_GADP_linux_gad_2001"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 12288
+        name: "DC1-B28-Oracle-DS"
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 12289
+        name: "SRM-Vol-1-Datastore_TI_SVOL"
+        size: "151.00GB"
+        pool_id: 0
+      - ldev_id: 12290
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 12291
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 12292
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 12293
+        name: "Ovirt-CV-Direct-ASM"
+        size: "100.00GB"
+        pool_id: 0
+      - ldev_id: 12294
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 12295
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 12296
+        name: "DC1-B28-OracleASMDB"
+        size: "31.00GB"
+        pool_id: 0
+      - ldev_id: 12299
+        name: "JNL_0_AB-CS-HUR-Somerset-Clifton"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 12300
+        name: "AB-CS-Win2"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 12301
+        name: "JNL_2_AB-CS-HUR-Clifton-Sommerse"
+        size: "10.00GB"
+        pool_id: 0
+      - ldev_id: 12354
+        name: "CS_Ventura_DS"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 12800
+        name: ""
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 12808
+        name: "tc_test"
+        size: "1.00GB"
+        pool_id: 0
+      - ldev_id: 16384
+        name: "VeeamPR_0042,004_20251127030923"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16385
+        name: "VeeamPR_0042,008_20251201030932"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16386
+        name: "VeeamPR_0042,007_20251203192230"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16388
+        name: "VeeamPR_0042,003_20251206030953"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16390
+        name: "VeeamPR_0042,003_20251205030938"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16391
+        name: "VeeamPR_0042,006_20251203174839"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16396
+        name: "VeeamPR_0042,008_20251204030943"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16397
+        name: "VeeamPR_0042,005_20251208030850"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16398
+        name: "VeeamPR_0042,004_20251207030853"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 16399
+        name: "VeeamPR_0042,006_20251209030859"
+        size: "256.00GB"
+        pool_id: 0
+      - ldev_id: 20480
+        name: ""
+        size: "1.00TB"
+        pool_id: 0
+      - ldev_id: 20481
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 20482
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 20483
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 20484
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 20492
+        name: "CS_AB-CS-Win2-S"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 24576
+        name: ""
+        size: "1.00TB"
+        pool_id: -1
+      - ldev_id: 24588
+        name: "CS_AB-CS-Win-2S"
+        size: "12.00GB"
+        pool_id: 0
+      - ldev_id: 24592
+        name: ""
+        size: "1.00TB"
+        pool_id: 11
+      - ldev_id: 24593
+        name: ""
+        size: "1.00TB"
+        pool_id: 11
+      - ldev_id: 28672
+        name: ""
+        size: "8.00TB"
+        pool_id: -1
+      - ldev_id: 28673
+        name: ""
+        size: "8.00TB"
+        pool_id: 0
+      - ldev_id: 28674
+        name: ""
+        size: "8.00TB"
+        pool_id: 10
+      - ldev_id: 48640
+        name: "CS_sdfsdf"
+        size: "25.00GB"
+        pool_id: 0
+      - ldev_id: 48641
+        name: "CS_sdfsdf"
+        size: "15.00GB"
+        pool_id: 0
+      - ldev_id: 49100
+        name: ""
+        size: "6.00TB"
+        pool_id: 11
+      - ldev_id: 49101
+        name: ""
+        size: "6.00TB"
+        pool_id: 11
+      - ldev_id: 49102
+        name: ""
+        size: "6.00TB"
+        pool_id: 11
+      - ldev_id: 49103
+        name: ""
+        size: "6.00TB"
+        pool_id: 11
+      - ldev_id: 49104
+        name: ""
+        size: "1.97TB"
+        pool_id: 11
+      - ldev_id: 49105
+        name: ""
+        size: "1.97TB"
+        pool_id: 11
+      - ldev_id: 49106
+        name: ""
+        size: "1.97TB"
+        pool_id: 11
+      - ldev_id: 49107
+        name: ""
+        size: "1.97TB"
+        pool_id: 11
+      - ldev_id: 49108
+        name: ""
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 49109
+        name: ""
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 49110
+        name: ""
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 49111
+        name: ""
+        size: "21.00TB"
+        pool_id: 0
+      - ldev_id: 49112
+        name: ""
+        size: "1.97TB"
+        pool_id: 0
+      - ldev_id: 49113
+        name: ""
+        size: "1.97TB"
+        pool_id: 0
+      - ldev_id: 49114
+        name: ""
+        size: "1.97TB"
+        pool_id: 0
+      - ldev_id: 49115
+        name: ""
+        size: "1.97TB"
+        pool_id: 0
+      - ldev_id: 49116
+        name: "[AutoConfig]LDEV#49116_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49117
+        name: "[AutoConfig]LDEV#49117_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49118
+        name: "[AutoConfig]LDEV#49118_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49119
+        name: "[AutoConfig]LDEV#49119_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49120
+        name: "[AutoConfig]LDEV#49120_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49121
+        name: "[AutoConfig]LDEV#49121_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49122
+        name: "[AutoConfig]LDEV#49122_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49123
+        name: "[AutoConfig]LDEV#49123_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49124
+        name: "[AutoConfig]LDEV#49124_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49125
+        name: "[AutoConfig]LDEV#49125_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49126
+        name: "[AutoConfig]LDEV#49126_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49127
+        name: "[AutoConfig]LDEV#49127_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49128
+        name: "[AutoConfig]LDEV#49128_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49129
+        name: "[AutoConfig]LDEV#49129_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49130
+        name: "[AutoConfig]LDEV#49130_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49131
+        name: "[AutoConfig]LDEV#49131_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49132
+        name: "[AutoConfig]LDEV#49132_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49133
+        name: "[AutoConfig]LDEV#49133_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49134
+        name: "[AutoConfig]LDEV#49134_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49135
+        name: "[AutoConfig]LDEV#49135_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49136
+        name: "[AutoConfig]LDEV#49136_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49137
+        name: "[AutoConfig]LDEV#49137_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49138
+        name: "[AutoConfig]LDEV#49138_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49139
+        name: "[AutoConfig]LDEV#49139_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49140
+        name: "[AutoConfig]LDEV#49140_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49141
+        name: "[AutoConfig]LDEV#49141_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49142
+        name: "[AutoConfig]LDEV#49142_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49143
+        name: "[AutoConfig]LDEV#49143_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49144
+        name: "[AutoConfig]LDEV#49144_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49145
+        name: "[AutoConfig]LDEV#49145_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49146
+        name: "[AutoConfig]LDEV#49146_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49147
+        name: "[AutoConfig]LDEV#49147_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+      - ldev_id: 49148
+        name: "[AutoConfig]LDEV#49148_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49149
+        name: "[AutoConfig]LDEV#49149_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49150
+        name: "[AutoConfig]LDEV#49150_687e1349"
+        size: "3.00TB"
+        pool_id: -1
+      - ldev_id: 49151
+        name: "[AutoConfig]LDEV#49151_687e1349"
+        size: "1.27TB"
+        pool_id: -1
+
+    # All Hostgroups from all_storage_facts.json
+    hostgroup_config:
+      - hg_id: 0
+        name: "1A-G00"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Compass1_Server"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 2
+        name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 3
+        name: "MSSQL1"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 4
+        name: "File38-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 5
+        name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 6
+        name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 7
+        name: "Infra-ESXi-N1-4"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 8
+        name: "Infra-ESXi-N1-1"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 9
+        name: "Infra-ESXi-N1-2"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 10
+        name: "Dale-Test"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 11
+        name: "OraVirt-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 12
+        name: "Goose"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 13
+        name: "Demo"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 14
+        name: "DemoLinux"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 15
+        name: "WindowsDemo"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 16
+        name: "VBR_VeeamServer"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 17
+        name: "VBR_Veeam-Linux-Proxy"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 18
+        name: "DummyServer"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 19
+        name: "DummyDemo"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 20
+        name: "William"
+        port: "CL1-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 21
+        name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 22
+        name: "rhel01"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 23
+        name: "Proxmox-Cluster"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 24
+        name: "VSP360DPTEST"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 25
+        name: "Phoenix-Linux-1"
+        port: "CL1-A"
+        host_mode: "LINUX"
+      - hg_id: 26
+        name: "Compass_Server2"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 27
+        name: "Fake-Server"
+        port: "CL1-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 0
+        name: "2A-G00"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Compass1_Server"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 2
+        name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 3
+        name: "MSSQL1"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 4
+        name: "File38-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 5
+        name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 6
+        name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 7
+        name: "Infra-ESXi-N1-4"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 8
+        name: "Infra-ESXi-N1-3"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 9
+        name: "Infra-ESXi-N1-2"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 10
+        name: "Dale-Test"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 11
+        name: "OraVirt-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 12
+        name: "Goose"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 13
+        name: "Demo"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 14
+        name: "DemoLinux"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 15
+        name: "WindowsDemo"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 16
+        name: "VBR_VeeamServer"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 17
+        name: "VBR_Veeam-Linux-Proxy"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 18
+        name: "DummyServer"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 19
+        name: "DummyDemo"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 20
+        name: "William"
+        port: "CL2-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 21
+        name: "rhel01"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 22
+        name: "Proxmox-Cluster"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 23
+        name: "Phoenix-Linux-1"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 24
+        name: "VSP360DPTEST"
+        port: "CL2-A"
+        host_mode: "LINUX"
+      - hg_id: 25
+        name: "Compass_Server2"
+        port: "CL2-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 0
+        name: "3A-G00"
+        port: "CL3-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Infra-ESXi-N1-1"
+        port: "CL3-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 6
+        name: "VBR_DC1-ESXi-Cluster"
+        port: "CL3-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 0
+        name: "4A-G00"
+        port: "CL4-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "VBR_DC1-ESXi-Cluster"
+        port: "CL4-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 2
+        name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+        host_mode: "LINUX"
+      - hg_id: 0
+        name: "5A-G00"
+        port: "CL5-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Infra-ESXi-N1-NEW"
+        port: "CL5-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 2
+        name: "linux_gad@DC1"
+        port: "CL5-A"
+        host_mode: "LINUX"
+      - hg_id: 3
+        name: "linux_gad@DC2"
+        port: "CL5-A"
+        host_mode: "LINUX"
+      - hg_id: 7
+        name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL5-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 0
+        name: "6A-G00"
+        port: "CL6-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Infra-ESXi-N1-NEW"
+        port: "CL6-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 2
+        name: "linux_gad@DC1"
+        port: "CL6-A"
+        host_mode: "LINUX"
+      - hg_id: 3
+        name: "linux_gad@DC2"
+        port: "CL6-A"
+        host_mode: "LINUX"
+      - hg_id: 7
+        name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL6-A"
+        host_mode: "VMWARE_EXTENSION"
+      - hg_id: 0
+        name: "7A-G00"
+        port: "CL7-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "Dummy_Delete"
+        port: "CL7-A"
+        host_mode: "WINDOWS_EXTENSION"
+      - hg_id: 2
+        name: "Temp-Migration-Server"
+        port: "CL7-A"
+        host_mode: "LINUX"
+      - hg_id: 0
+        name: "8A-G00"
+        port: "CL8-A"
+        host_mode: "LINUX"
+      - hg_id: 1
+        name: "HID-DP-00"
+        port: "CL8-A"
+        host_mode: "LINUX"
+      - hg_id: 2
+        name: "Dummy_Delete"
+        port: "CL8-A"
+        host_mode: "WINDOWS_EXTENSION"
+
+    # LDEV-Hostgroup Provisioning Mappings
+    provisioning_mappings:
+      - ldev_id: 1
+        ldev_name: "CVR-MNGMT-DS"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 1
+        ldev_name: "CVR-MNGMT-DS"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 2
+        ldev_name: "DC1-ESXi-Cluster-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 2
+        ldev_name: "DC1-ESXi-Cluster-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 3
+        ldev_name: "Newark-Datastore-1"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 3
+        ldev_name: "Newark-Datastore-1"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 4
+        ldev_name: "Newark-Datastore-2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 4
+        ldev_name: "Newark-Datastore-2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 5
+        ldev_name: "Newark-Datastore-3"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 5
+        ldev_name: "Newark-Datastore-3"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 6
+        ldev_name: "SRM-Placeholder-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 6
+        ldev_name: "SRM-Placeholder-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 7
+        ldev_name: "SRM-Vol-1-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 7
+        ldev_name: "SRM-Vol-1-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 8
+        ldev_name: "SRM-Vol-2-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 8
+        ldev_name: "SRM-Vol-2-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 9
+        ldev_name: "Personal-VM1-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 9
+        ldev_name: "Personal-VM1-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 10
+        ldev_name: "Personal-VM2-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 10
+        ldev_name: "Personal-VM2-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 11
+        ldev_name: "Personal-VM3-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 11
+        ldev_name: "Personal-VM3-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 12
+        ldev_name: "MSSQL1-Data"
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 12
+        ldev_name: "MSSQL1-Data"
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 13
+        ldev_name: "MSSQL1-Logs"
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 13
+        ldev_name: "MSSQL1-Logs"
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 14
+        ldev_name: "MSSQL1-Fileshare"
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 14
+        ldev_name: "MSSQL1-Fileshare"
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 15
+        ldev_name: "VDBench1-RDM-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 15
+        ldev_name: "VDBench1-RDM-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 16
+        ldev_name: "File38-Cluster-Vol1"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 16
+        ldev_name: "File38-Cluster-Vol1"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 17
+        ldev_name: "Fileshare-Vol1"
+        hostgroup_name: "Compass1_Server"
+        port: "CL1-A"
+      - ldev_id: 17
+        ldev_name: "Fileshare-Vol1"
+        hostgroup_name: "Compass1_Server"
+        port: "CL2-A"
+      - ldev_id: 18
+        ldev_name: "Fileshare-Vol2"
+        hostgroup_name: "Compass1_Server"
+        port: "CL1-A"
+      - ldev_id: 18
+        ldev_name: "Fileshare-Vol2"
+        hostgroup_name: "Compass1_Server"
+        port: "CL2-A"
+      - ldev_id: 19
+        ldev_name: "Fileshare-Vol3"
+        hostgroup_name: "Compass1_Server"
+        port: "CL1-A"
+      - ldev_id: 19
+        ldev_name: "Fileshare-Vol3"
+        hostgroup_name: "Compass1_Server"
+        port: "CL2-A"
+      - ldev_id: 20
+        ldev_name: "File38-Cluster-Vol2"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 20
+        ldev_name: "File38-Cluster-Vol2"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 21
+        ldev_name: "File38-Cluster-Vol3"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 21
+        ldev_name: "File38-Cluster-Vol3"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 22
+        ldev_name: "File38-Cluster-Vol4"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 22
+        ldev_name: "File38-Cluster-Vol4"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 23
+        ldev_name: "File38-Cluster-Vol5"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 23
+        ldev_name: "File38-Cluster-Vol5"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 24
+        ldev_name: "File38-Cluster-Vol6"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 24
+        ldev_name: "File38-Cluster-Vol6"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 25
+        ldev_name: "File38-Cluster-Vol7"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 25
+        ldev_name: "File38-Cluster-Vol7"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 26
+        ldev_name: "File38-Cluster-Vol8"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 26
+        ldev_name: "File38-Cluster-Vol8"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 27
+        ldev_name: "File38-Cluster-Vol9"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 27
+        ldev_name: "File38-Cluster-Vol9"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 28
+        ldev_name: "File38-Cluster-Vol10"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 28
+        ldev_name: "File38-Cluster-Vol10"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 29
+        ldev_name: "File38-Cluster-Vol11"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 29
+        ldev_name: "File38-Cluster-Vol11"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 30
+        ldev_name: "File38-Cluster-Vol12"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 30
+        ldev_name: "File38-Cluster-Vol12"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 31
+        ldev_name: "File38-Cluster-Vol13"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 31
+        ldev_name: "File38-Cluster-Vol13"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 32
+        ldev_name: "File38-Cluster-Vol14"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 32
+        ldev_name: "File38-Cluster-Vol14"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 33
+        ldev_name: "File38-Cluster-Vol15"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 33
+        ldev_name: "File38-Cluster-Vol15"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 34
+        ldev_name: "File38-Cluster-Vol16"
+        hostgroup_name: "File38-Cluster"
+        port: "CL1-A"
+      - ldev_id: 34
+        ldev_name: "File38-Cluster-Vol16"
+        hostgroup_name: "File38-Cluster"
+        port: "CL2-A"
+      - ldev_id: 35
+        ldev_name: "HNAS-5200-Cluster-Vol1"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 35
+        ldev_name: "HNAS-5200-Cluster-Vol1"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 36
+        ldev_name: "HNAS-5200-Cluster-Vol2"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 36
+        ldev_name: "HNAS-5200-Cluster-Vol2"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 37
+        ldev_name: "HNAS-5200-Cluster-Vol3"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 37
+        ldev_name: "HNAS-5200-Cluster-Vol3"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 38
+        ldev_name: "HNAS-5200-Cluster-Vol4"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 38
+        ldev_name: "HNAS-5200-Cluster-Vol4"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 39
+        ldev_name: "HNAS-5200-Cluster-Vol5"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 39
+        ldev_name: "HNAS-5200-Cluster-Vol5"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 40
+        ldev_name: "HNAS-5200-Cluster-Vol6"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 40
+        ldev_name: "HNAS-5200-Cluster-Vol6"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 41
+        ldev_name: "HNAS-5200-Cluster-Vol7"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 41
+        ldev_name: "HNAS-5200-Cluster-Vol7"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 42
+        ldev_name: "HNAS-5200-Cluster-Vol8"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 42
+        ldev_name: "HNAS-5200-Cluster-Vol8"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 43
+        ldev_name: "HNAS-5200-Cluster-Vol9"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 43
+        ldev_name: "HNAS-5200-Cluster-Vol9"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 44
+        ldev_name: "HNAS-5200-Cluster-Vol10"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 44
+        ldev_name: "HNAS-5200-Cluster-Vol10"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 45
+        ldev_name: "HNAS-5200-Cluster-Vol11"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 45
+        ldev_name: "HNAS-5200-Cluster-Vol11"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 46
+        ldev_name: "HNAS-5200-Cluster-Vol12"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 46
+        ldev_name: "HNAS-5200-Cluster-Vol12"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 47
+        ldev_name: "HNAS-5200-Cluster-Vol13"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 47
+        ldev_name: "HNAS-5200-Cluster-Vol13"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 48
+        ldev_name: "HNAS-5200-Cluster-Vol14"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 48
+        ldev_name: "HNAS-5200-Cluster-Vol14"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 49
+        ldev_name: "HNAS-5200-Cluster-Vol15"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 49
+        ldev_name: "HNAS-5200-Cluster-Vol15"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 50
+        ldev_name: "HNAS-5200-Cluster-Vol16"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 50
+        ldev_name: "HNAS-5200-Cluster-Vol16"
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-2"
+        port: "CL2-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL2-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-4"
+        port: "CL2-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-2"
+        port: "CL1-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL1-A"
+      - ldev_id: 53
+        ldev_name: "DS-GAD-Migrate"
+        hostgroup_name: "Infra-ESXi-N1-4"
+        port: "CL1-A"
+      - ldev_id: 54
+        ldev_name: "_GADP_OraVirt-Vol"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 54
+        ldev_name: "_GADP_OraVirt-Vol"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 55
+        ldev_name: "goose-swap"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 55
+        ldev_name: "goose-swap"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 56
+        ldev_name: "goose-opt-ie"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 57
+        ldev_name: "DC1-B28-CST-CoreServices"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 57
+        ldev_name: "DC1-B28-CST-CoreServices"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 58
+        ldev_name: "DC1-B28-CST-Baseline"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 58
+        ldev_name: "DC1-B28-CST-Baseline"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 59
+        ldev_name: "RDM-CS-Windows"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 59
+        ldev_name: "RDM-CS-Windows"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 60
+        ldev_name: "RDM-CS-Windows"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 60
+        ldev_name: "RDM-CS-Windows"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 61
+        ldev_name: "RDM-CS-Linux"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 61
+        ldev_name: "RDM-CS-Linux"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 62
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 62
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 63
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 63
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 64
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 64
+        ldev_name: "_GADP_Ovirt-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 65
+        ldev_name: "DC1-B28-CST-Applications"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 65
+        ldev_name: "DC1-B28-CST-Applications"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 66
+        ldev_name: "Ventura-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 66
+        ldev_name: "Ventura-Datastore"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 67
+        ldev_name: "VBR_VeeamVol"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 67
+        ldev_name: "VBR_VeeamVol"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL2-A"
+      - ldev_id: 68
+        ldev_name: "Olympia-Datastore-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 68
+        ldev_name: "Olympia-Datastore-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 69
+        ldev_name: "OraVirt-CV"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 69
+        ldev_name: "OraVirt-CV"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 70
+        ldev_name: "Veeam-Linux-Proxy-Placeholder"
+        hostgroup_name: "VBR_Veeam-Linux-Proxy"
+        port: "CL1-A"
+      - ldev_id: 70
+        ldev_name: "Veeam-Linux-Proxy-Placeholder"
+        hostgroup_name: "VBR_Veeam-Linux-Proxy"
+        port: "CL2-A"
+      - ldev_id: 71
+        ldev_name: "External_UVM"
+        hostgroup_name: "DummyServer"
+        port: "CL1-A"
+      - ldev_id: 71
+        ldev_name: "External_UVM"
+        hostgroup_name: "DummyServer"
+        port: "CL2-A"
+      - ldev_id: 72
+        ldev_name: "External_UVM"
+        hostgroup_name: "DummyServer"
+        port: "CL1-A"
+      - ldev_id: 72
+        ldev_name: "External_UVM"
+        hostgroup_name: "DummyServer"
+        port: "CL2-A"
+      - ldev_id: 73
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 74
+        ldev_name: "UVM_DEMO"
+        hostgroup_name: "DummyDemo"
+        port: "CL1-A"
+      - ldev_id: 74
+        ldev_name: "UVM_DEMO"
+        hostgroup_name: "DummyDemo"
+        port: "CL2-A"
+      - ldev_id: 76
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 77
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 77
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 78
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 78
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 79
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 79
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 80
+        ldev_name: "DC1-B28-Oracle-DS"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 80
+        ldev_name: "DC1-B28-Oracle-DS"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 81
+        ldev_name: "GAD-DS-DeleteMe"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 81
+        ldev_name: "GAD-DS-DeleteMe"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 82
+        ldev_name: "DC1-ESXi-Cluster-Datastore2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 82
+        ldev_name: "DC1-ESXi-Cluster-Datastore2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 83
+        ldev_name: "RDM-CS-Linux-1TB-Ramju"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 83
+        ldev_name: "RDM-CS-Linux-1TB-Ramju"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 84
+        ldev_name: "Ovirt01-CV-LV"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 84
+        ldev_name: "Ovirt01-CV-LV"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 85
+        ldev_name: "Datastore_Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 85
+        ldev_name: "Datastore_Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 86
+        ldev_name: "DC1-ESXi-Cluster-Datastore3"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 86
+        ldev_name: "DC1-ESXi-Cluster-Datastore3"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 87
+        ldev_name: "DC1-ESXi-Cluster-Datastore4"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 87
+        ldev_name: "DC1-ESXi-Cluster-Datastore4"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 88
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 88
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 89
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 89
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 90
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 90
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 91
+        ldev_name: "CMD-UA-DC1-B28"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 91
+        ldev_name: "CMD-UA-DC1-B28"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-2"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-4"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "OraVirt-Cluster"
+        port: "CL1-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-2"
+        port: "CL1-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL1-A"
+      - ldev_id: 92
+        ldev_name: "CMD-UA-OracleKVM"
+        hostgroup_name: "Infra-ESXi-N1-4"
+        port: "CL1-A"
+      - ldev_id: 93
+        ldev_name: "IS_SVOL_SP_2_613_314"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 94
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 94
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 95
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "Dummy_Delete"
+        port: "CL7-A"
+      - ldev_id: 95
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "Dummy_Delete"
+        port: "CL8-A"
+      - ldev_id: 96
+        ldev_name: "IS_SVOL_SP_2_616_316"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 97
+        ldev_name: "IS_SVOL_SP_2_620_318"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 98
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 98
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 99
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 99
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 100
+        ldev_name: "DeleteMeTC"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 100
+        ldev_name: "DeleteMeTC"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 101
+        ldev_name: ""
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 101
+        ldev_name: ""
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 102
+        ldev_name: "_GADP_DeleteMeGAD"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 102
+        ldev_name: "_GADP_DeleteMeGAD"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 103
+        ldev_name: "TempGAD"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 103
+        ldev_name: "TempGAD"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 104
+        ldev_name: "William"
+        hostgroup_name: "William"
+        port: "CL1-A"
+      - ldev_id: 104
+        ldev_name: "William"
+        hostgroup_name: "William"
+        port: "CL2-A"
+      - ldev_id: 105
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 105
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 107
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 107
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 108
+        ldev_name: "Olympia-Datastore-Vol"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 109
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 113
+        ldev_name: "IS_SVOL_SP_2_564_294"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 114
+        ldev_name: "TCDEMO"
+        hostgroup_name: "rhel01"
+        port: "CL1-A"
+      - ldev_id: 114
+        ldev_name: "TCDEMO"
+        hostgroup_name: "rhel01"
+        port: "CL2-A"
+      - ldev_id: 115
+        ldev_name: "IS_SVOL_SP_2_573_302"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 116
+        ldev_name: "IS_SVOL_SP_2_578_308"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 117
+        ldev_name: "IS_SVOL_SP_2_581_310"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 118
+        ldev_name: "IS_SVOL_SP_2_600_312"
+        hostgroup_name: "IS_PRE_SNAP_HOST_GROUP"
+        port: "CL1-A"
+      - ldev_id: 120
+        ldev_name: "Proxmox-Cluster-Vol1"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL1-A"
+      - ldev_id: 120
+        ldev_name: "Proxmox-Cluster-Vol1"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL2-A"
+      - ldev_id: 121
+        ldev_name: "Proxmox-Cluster-Vol2"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL1-A"
+      - ldev_id: 121
+        ldev_name: "Proxmox-Cluster-Vol2"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL2-A"
+      - ldev_id: 122
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 122
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 123
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 123
+        ldev_name: "Demo"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 126
+        ldev_name: "Compass2-Vol1"
+        hostgroup_name: "Compass_Server2"
+        port: "CL1-A"
+      - ldev_id: 126
+        ldev_name: "Compass2-Vol1"
+        hostgroup_name: "Compass_Server2"
+        port: "CL2-A"
+      - ldev_id: 127
+        ldev_name: "Proxmox-Cluster-Vol3"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL1-A"
+      - ldev_id: 127
+        ldev_name: "Proxmox-Cluster-Vol3"
+        hostgroup_name: "Proxmox-Cluster"
+        port: "CL2-A"
+      - ldev_id: 129
+        ldev_name: "TCDEMO"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 129
+        ldev_name: "TCDEMO"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 131
+        ldev_name: "Phoenix-Vol-1"
+        hostgroup_name: "Phoenix-Linux-1"
+        port: "CL1-A"
+      - ldev_id: 131
+        ldev_name: "Phoenix-Vol-1"
+        hostgroup_name: "Phoenix-Linux-1"
+        port: "CL2-A"
+      - ldev_id: 132
+        ldev_name: ""
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 132
+        ldev_name: ""
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL6-A"
+      - ldev_id: 132
+        ldev_name: ""
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 132
+        ldev_name: ""
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL5-A"
+      - ldev_id: 133
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 133
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL6-A"
+      - ldev_id: 133
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 133
+        ldev_name: "Demo_Automator"
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL5-A"
+      - ldev_id: 134
+        ldev_name: ""
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 134
+        ldev_name: ""
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL6-A"
+      - ldev_id: 134
+        ldev_name: ""
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 134
+        ldev_name: ""
+        hostgroup_name: "dc1-esxi-n1.storage.idc.coe.hv"
+        port: "CL5-A"
+      - ldev_id: 135
+        ldev_name: "OracleASMVM"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 135
+        ldev_name: "OracleASMVM"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 136
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 136
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 137
+        ldev_name: "AB-CS-Win1"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 137
+        ldev_name: "AB-CS-Win1"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 138
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 138
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 139
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 139
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 140
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 140
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 141
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 141
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 142
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 142
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 143
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 143
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 144
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 144
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 145
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL1-A"
+      - ldev_id: 145
+        ldev_name: "Demo"
+        hostgroup_name: "VSP360DPTEST"
+        port: "CL2-A"
+      - ldev_id: 146
+        ldev_name: "DeleteMe"
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 146
+        ldev_name: "DeleteMe"
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 147
+        ldev_name: "VirtLun"
+        hostgroup_name: "MSSQL1"
+        port: "CL1-A"
+      - ldev_id: 147
+        ldev_name: "VirtLun"
+        hostgroup_name: "MSSQL1"
+        port: "CL2-A"
+      - ldev_id: 148
+        ldev_name: "Compass2-Vol2"
+        hostgroup_name: "Compass_Server2"
+        port: "CL1-A"
+      - ldev_id: 148
+        ldev_name: "Compass2-Vol2"
+        hostgroup_name: "Compass_Server2"
+        port: "CL2-A"
+      - ldev_id: 152
+        ldev_name: "Fileshare-Vol1"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 153
+        ldev_name: "Fileshare-Vol2"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 154
+        ldev_name: "Fileshare-Vol3"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 155
+        ldev_name: "Compass2-Vol3"
+        hostgroup_name: "Compass_Server2"
+        port: "CL1-A"
+      - ldev_id: 155
+        ldev_name: "Compass2-Vol3"
+        hostgroup_name: "Compass_Server2"
+        port: "CL2-A"
+      - ldev_id: 156
+        ldev_name: "Compass2-Vol1-SVOL"
+        hostgroup_name: "Temp-Migration-Server"
+        port: "CL7-A"
+      - ldev_id: 157
+        ldev_name: "Compass2-Vol2-SVOL"
+        hostgroup_name: "Temp-Migration-Server"
+        port: "CL7-A"
+      - ldev_id: 158
+        ldev_name: "Compass2-Vol3-SVOL"
+        hostgroup_name: "Temp-Migration-Server"
+        port: "CL7-A"
+      - ldev_id: 2000
+        ldev_name: "CS_VM_Baseline"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 2000
+        ldev_name: "CS_VM_Baseline"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 2001
+        ldev_name: "CS_VM_Apps"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 2001
+        ldev_name: "CS_VM_Apps"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 2577
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 2577
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 2578
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 2578
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 2579
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 2579
+        ldev_name: "CS_Newark-VM-Data"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4155
+        ldev_name: "CS_Windows"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4155
+        ldev_name: "CS_Windows"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4155
+        ldev_name: "CS_Windows"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 4157
+        ldev_name: "CS_LinuxTest1"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4157
+        ldev_name: "CS_LinuxTest1"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4173
+        ldev_name: "CS_OracleASMDB31G"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4173
+        ldev_name: "CS_OracleASMDB31G"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4201
+        ldev_name: "CS_DummyServer"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4201
+        ldev_name: "CS_DummyServer"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4231
+        ldev_name: "CS_OracleFS"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4231
+        ldev_name: "CS_OracleFS"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 4231
+        ldev_name: "CS_OracleFS"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 4407
+        ldev_name: "CS_AB-CS-Win1-S"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 4407
+        ldev_name: "CS_AB-CS-Win1-S"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 7936
+        ldev_name: "VSM-888888-Dummy-Vol"
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL3-A"
+      - ldev_id: 7937
+        ldev_name: "Demo"
+        hostgroup_name: "Infra-ESXi-N1-NEW"
+        port: "CL5-A"
+      - ldev_id: 7937
+        ldev_name: "Demo"
+        hostgroup_name: "Infra-ESXi-N1-NEW"
+        port: "CL6-A"
+      - ldev_id: 8192
+        ldev_name: "linux_hur_2000"
+        hostgroup_name: "rhel01"
+        port: "CL1-A"
+      - ldev_id: 8192
+        ldev_name: "linux_hur_2000"
+        hostgroup_name: "rhel01"
+        port: "CL2-A"
+      - ldev_id: 8193
+        ldev_name: "_GADP_linux_gad_2001"
+        hostgroup_name: "linux_gad@DC1"
+        port: "CL5-A"
+      - ldev_id: 8193
+        ldev_name: "_GADP_linux_gad_2001"
+        hostgroup_name: "linux_gad@DC2"
+        port: "CL6-A"
+      - ldev_id: 8193
+        ldev_name: "_GADP_linux_gad_2001"
+        hostgroup_name: "linux_gad@DC1"
+        port: "CL6-A"
+      - ldev_id: 12288
+        ldev_name: "DC1-B28-Oracle-DS"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12289
+        ldev_name: "SRM-Vol-1-Datastore_TI_SVOL"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 12289
+        ldev_name: "SRM-Vol-1-Datastore_TI_SVOL"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12289
+        ldev_name: "SRM-Vol-1-Datastore_TI_SVOL"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 12290
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12291
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12292
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12293
+        ldev_name: "Ovirt-CV-Direct-ASM"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12294
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12295
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12296
+        ldev_name: "DC1-B28-OracleASMDB"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12300
+        ldev_name: "AB-CS-Win2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL1-A"
+      - ldev_id: 12300
+        ldev_name: "AB-CS-Win2"
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 12300
+        ldev_name: "AB-CS-Win2"
+        hostgroup_name: "DC1-ESXi-Cluster"
+        port: "CL2-A"
+      - ldev_id: 12300
+        ldev_name: "AB-CS-Win2"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL1-A"
+      - ldev_id: 12300
+        ldev_name: "AB-CS-Win2"
+        hostgroup_name: "VBR_VeeamServer"
+        port: "CL2-A"
+      - ldev_id: 12354
+        ldev_name: "CS_Ventura_DS"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 12354
+        ldev_name: "CS_Ventura_DS"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 12800
+        ldev_name: ""
+        hostgroup_name: "Dale-Test"
+        port: "CL1-A"
+      - ldev_id: 12800
+        ldev_name: ""
+        hostgroup_name: "Dale-Test"
+        port: "CL2-A"
+      - ldev_id: 12808
+        ldev_name: "tc_test"
+        hostgroup_name: "Dale-Test"
+        port: "CL1-A"
+      - ldev_id: 12808
+        ldev_name: "tc_test"
+        hostgroup_name: "Dale-Test"
+        port: "CL2-A"
+      - ldev_id: 20480
+        ldev_name: ""
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+      - ldev_id: 20480
+        ldev_name: ""
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+      - ldev_id: 20492
+        ldev_name: "CS_AB-CS-Win2-S"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 20492
+        ldev_name: "CS_AB-CS-Win2-S"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 24576
+        ldev_name: ""
+        hostgroup_name: "HDIDProvisionedHostGroup"
+        port: "CL4-A"
+      - ldev_id: 24588
+        ldev_name: "CS_AB-CS-Win-2S"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 24588
+        ldev_name: "CS_AB-CS-Win-2S"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 24593
+        ldev_name: ""
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL1-A"
+      - ldev_id: 24593
+        ldev_name: ""
+        hostgroup_name: "HNAS-5200-Cluster"
+        port: "CL2-A"
+      - ldev_id: 28673
+        ldev_name: ""
+        hostgroup_name: "Infra-ESXi-N1-3"
+        port: "CL1-A"
+      - ldev_id: 28673
+        ldev_name: ""
+        hostgroup_name: "Infra-ESXi-N1-1"
+        port: "CL2-A"
+      - ldev_id: 48640
+        ldev_name: "CS_sdfsdf"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 48640
+        ldev_name: "CS_sdfsdf"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+      - ldev_id: 48641
+        ldev_name: "CS_sdfsdf"
+        hostgroup_name: "Goose"
+        port: "CL1-A"
+      - ldev_id: 48641
+        ldev_name: "CS_sdfsdf"
+        hostgroup_name: "Goose"
+        port: "CL2-A"
+
+
+  tasks:
+    ####################################################################
+    # Step 1: Create All LDEVs
+    ####################################################################
+    - name: Create All LDEVs from storage facts
+      hitachivantara.vspone_block.vsp.hv_ldev:
+        connection_info: "{{ connection_info }}"
+        state: present
+        spec:
+          pool_id: "{{ item.pool_id }}"
+          size: "{{ item.size }}"
+          name: "{{ item.name }}"
+      register: ldev_result
+      loop: "{{ ldev_config }}"
+      loop_control:
+        label: "LDEV {{ item.ldev_id }}: {{ item.name }}"
+      tags:
+        - ldev
+        - always
+
+    - name: Collect LDEV creation results
+      ansible.builtin.set_fact:
+        created_ldevs: "{{ ldev_result.results | map(attribute='item') | list }}"
+      when: ldev_result is succeeded
+
+    ####################################################################
+    # Step 2: Create All Hostgroups
+    ####################################################################
+    - name: Create All Hostgroups from storage facts
+      hitachivantara.vspone_block.vsp.hv_hg:
+        connection_info: "{{ connection_info }}"
+        state: present
+        spec:
+          name: "{{ item.name }}"
+          port: "{{ item.port }}"
+          host_mode: "{{ item.host_mode }}"
+      register: hostgroup_result
+      loop: "{{ hostgroup_config }}"
+      loop_control:
+        label: "HG {{ item.hg_id }}: {{ item.name }} on {{ item.port }}"
+      tags:
+        - hostgroup
+        - always
+
+    - name: Collect Hostgroup creation results
+      ansible.builtin.set_fact:
+        created_hostgroups: "{{ hostgroup_result.results | map(attribute='item') | list }}"
+      when: hostgroup_result is succeeded
+
+    ####################################################################
+    # Step 3: Provision LDEVs to Hostgroups
+    ####################################################################
+    - name: Provision LDEVs to Hostgroups
+      hitachivantara.vspone_block.vsp.hv_hg:
+        connection_info: "{{ connection_info }}"
+        state: present
+        spec:
+          state: present_ldev
+          name: "{{ item.hostgroup_name }}"
+          port: "{{ item.port }}"
+          ldevs: ["{{ item.ldev_id }}"]
+      register: provision_result
+      loop: "{{ provisioning_mappings }}"
+      loop_control:
+        label: "LDEV {{ item.ldev_id }} -> {{ item.hostgroup_name }}"
+      tags:
+        - provision
+        - always
+
+  post_tasks:
+    - name: Display Provisioning Summary - Header
+      ansible.builtin.debug:
+        msg: "╔════════════════════════════════════════════════════════════╗"
+
+    - name: Display Provisioning Summary - Title
+      ansible.builtin.debug:
+        msg: "║           STORAGE PROVISIONING WORKFLOW COMPLETE           ║"
+
+    - name: Display Provisioning Summary - Footer
+      ansible.builtin.debug:
+        msg: "╚════════════════════════════════════════════════════════════╝"
+
+    - name: Display Provisioning Summary - Blank
+      ansible.builtin.debug:
+        msg: ""
+
+    - name: Display Provisioning Summary - LDEV Count
+      ansible.builtin.debug:
+        msg: "✓ LDEVs Created: {{ ldev_config | length }}"
+
+    - name: Display Provisioning Summary - HG Count
+      ansible.builtin.debug:
+        msg: "✓ Hostgroups Created: {{ hostgroup_config | length }}"
+
+    - name: Display Provisioning Summary - Mapping Count
+      ansible.builtin.debug:
+        msg: "✓ LDEV-HG Mappings: {{ provisioning_mappings | length }}"
+
+    - name: Display Provisioning Summary - Status Header
+      ansible.builtin.debug:
+        msg: ""
+
+    - name: Display Provisioning Summary - Status Title
+      ansible.builtin.debug:
+        msg: "Execution Status:"
+
+    - name: Display Provisioning Summary - LDEV Status
+      ansible.builtin.debug:
+        msg: "- LDEV Creation: {{ ldev_result.results | rejectattr('failed') | length }} successful"
+
+    - name: Display Provisioning Summary - HG Status
+      ansible.builtin.debug:
+        msg: "- Hostgroup Creation: {{ hostgroup_result.results | rejectattr('failed') | length }} successful"
+
+    - name: Display Provisioning Summary - Provision Status
+      ansible.builtin.debug:
+        msg: "- LDEV Provisioning: {{ provision_result.results | rejectattr('failed') | length }} successful"

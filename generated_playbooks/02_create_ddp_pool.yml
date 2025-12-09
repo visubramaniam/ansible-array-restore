@@ -1,0 +1,55 @@
+---
+####################################################################
+# Auto-Generated DDP Pool Creation Playbook
+# Generated: 2025-12-09 14:10:36
+####################################################################
+- name: Create DDP Pool
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../ansible_vault_vars/ansible_vault_storage_var.yml
+
+  vars:
+    connection_info:
+      address: "{{ storage_address }}"
+      username: "{{ vault_storage_username }}"
+      password: "{{ vault_storage_secret }}"
+    
+    ddp_pool_config:
+      name: "ansible_ddp_pool"
+      is_encryption_enabled: true
+      threshold_warning: 70
+      threshold_depletion: 80
+
+  tasks:
+    ####################################################################
+    # Task: Create DDP Pool with auto-assigned drives
+    ####################################################################
+    - name: Create DDP Pool
+      hitachivantara.vspone_block.vsp.hv_ddp_pool:
+        connection_info: "{{ connection_info }}"
+        state: present
+        spec:
+          pool_name: "{{ ddp_pool_config.name }}"
+          is_encryption_enabled: "{{ ddp_pool_config.is_encryption_enabled }}"
+          threshold_warning: "{{ ddp_pool_config.threshold_warning }}"
+          threshold_depletion: "{{ ddp_pool_config.threshold_depletion }}"
+      register: ddp_pool_result
+
+    - name: Debug DDP pool creation result
+      ansible.builtin.debug:
+        var: ddp_pool_result
+
+    - name: Set DDP pool ID for subsequent tasks
+      ansible.builtin.set_fact:
+        created_ddp_pool_id: "{{ ddp_pool_result['pool']['pool_id'] }}"
+      when: ddp_pool_result is succeeded
+
+  post_tasks:
+    - name: Display created DDP pool information
+      ansible.builtin.debug:
+        msg: |
+          DDP Pool Created Successfully!
+          Pool ID: {{ created_ddp_pool_id }}
+          Pool Name: {{ ddp_pool_config.name }}

@@ -1,0 +1,59 @@
+---
+####################################################################
+# Auto-Generated Storage Pool Creation Playbook
+# Generated: 2025-12-09 14:10:36
+####################################################################
+- name: Create Storage Pool
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - ../ansible_vault_vars/ansible_vault_storage_var.yml
+
+  vars:
+    connection_info:
+      address: "{{ storage_address }}"
+      username: "{{ vault_storage_username }}"
+      password: "{{ vault_storage_secret }}"
+    
+    pool_config:
+      name: "ansible_managed_pool"
+      pool_type: "HDP"  # HDP for traditional pool, DDP for DDP pool
+      size: "50GB"
+      warning_threshold: 70
+      depletion_threshold: 80
+
+  tasks:
+    ####################################################################
+    # Task: Create Storage Pool
+    ####################################################################
+    - name: Create Storage Pool using parity group
+      hitachivantara.vspone_block.vsp.hv_storagepool:
+        connection_info: "{{ connection_info }}"
+        state: present
+        spec:
+          pool_name: "{{ pool_config.name }}"
+          pool_type: "{{ pool_config.pool_type }}"
+          parity_group_id: "1-1"
+          capacity: "{{ pool_config.size }}"
+          warning_threshold: "{{ pool_config.warning_threshold }}"
+          depletion_threshold: "{{ pool_config.depletion_threshold }}"
+      register: pool_result
+
+    - name: Debug pool creation result
+      ansible.builtin.debug:
+        var: pool_result
+
+    - name: Set pool ID for subsequent tasks
+      ansible.builtin.set_fact:
+        created_pool_id: "{{ pool_result['pool']['pool_id'] }}"
+      when: pool_result is succeeded
+
+  post_tasks:
+    - name: Display created pool information
+      ansible.builtin.debug:
+        msg: |
+          Pool Created Successfully!
+          Pool ID: {{ created_pool_id }}
+          Pool Name: {{ pool_config.name }}
+          Pool Type: {{ pool_config.pool_type }}
