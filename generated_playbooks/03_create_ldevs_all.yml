@@ -1,8 +1,8 @@
 ---
 ####################################################################
 # Auto-Generated LDEV Creation Playbook - All LDEVs
-# Generated: 2025-12-09 16:41:33
-# Total LDEVs: 289
+# Generated: 2025-12-09 17:09:36
+# Total LDEVs: 179
 ####################################################################
 - name: Create All Logical Devices (LDEVs)
   hosts: localhost
@@ -19,13 +19,6 @@
     
     # LDEV Configuration extracted from all_storage_facts.json
     ldev_config:
-      - ldev_id: 0
-        name: "DC1-B28-B-Dummy-Vol"
-        size: "10.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 1
         name: "CVR-MNGMT-DS"
         size: "1.00TB"
@@ -376,20 +369,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 51
-        name: "DC1-DC2-B28-B-G1500-Quorum01"
-        size: "30.00GB"
-        pool_id: -1
-        emulation_type: "OPEN-V"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 52
-        name: "DC1-DC2-B28-B-G1500-Quorum"
-        size: "31.00GB"
-        pool_id: -1
-        emulation_type: "OPEN-V"
-        capacity_saving: ""
-        data_reduction_share: none
       - ldev_id: 53
         name: "DS-GAD-Migrate"
         size: "11.00GB"
@@ -540,13 +519,6 @@
       - ldev_id: 74
         name: "UVM_DEMO"
         size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 75
-        name: ""
-        size: "10.00TB"
         pool_id: -1
         emulation_type: "OPEN-V-CVS"
         capacity_saving: ""
@@ -761,13 +733,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 106
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 107
         name: "Demo"
         size: "20.00GB"
@@ -789,27 +754,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 110
-        name: "WindowsDemoVol"
-        size: "15.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 111
-        name: "JNL-1"
-        size: "25.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 112
-        name: ""
-        size: "25.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
       - ldev_id: 113
         name: "IS_SVOL_SP_2_564_294"
         size: "100.00GB"
@@ -852,13 +796,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 119
-        name: ""
-        size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
       - ldev_id: 120
         name: "Proxmox-Cluster-Vol1"
         size: "4.00TB"
@@ -887,20 +824,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 124
-        name: "TCDEMO"
-        size: "1.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 125
-        name: "123"
-        size: "12.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 126
         name: "Compass2-Vol1"
         size: "10.00GB"
@@ -915,26 +838,12 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 128
-        name: ""
-        size: "20.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 129
         name: "TCDEMO"
         size: "1.00TB"
         pool_id: 0
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
-        data_reduction_share: none
-      - ldev_id: 130
-        name: "MHICKEY_TEST_10-09-25"
-        size: "5.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
         data_reduction_share: none
       - ldev_id: 131
         name: "Phoenix-Vol-1"
@@ -1062,27 +971,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 149
-        name: "Fileshare-Vol2"
-        size: "12.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 150
-        name: "Fileshare-Vol3"
-        size: "13.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 151
-        name: "Fileshare-Vol1"
-        size: "11.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 152
         name: "Fileshare-Vol1"
         size: "11.00GB"
@@ -1132,34 +1020,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 164
-        name: "TestVolume"
-        size: "100.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 165
-        name: "NewVolume"
-        size: "100.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 200
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 344
-        name: ""
-        size: "100.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 2000
         name: "CS_VM_Baseline"
         size: "8.00TB"
@@ -1194,48 +1054,6 @@
         pool_id: 0
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4000
-        name: "CVR52_SNAP_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4001
-        name: "CVR57_SNAP_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4002
-        name: "CVR59_SNAP_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4003
-        name: "CVR60_SNAP_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4004
-        name: "CVR60_SnS_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4096
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
         data_reduction_share: true
       - ldev_id: 4155
         name: "CS_Windows"
@@ -1272,103 +1090,12 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 4352
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
       - ldev_id: 4407
         name: "CS_AB-CS-Win1-S"
         size: "11.00GB"
         pool_id: 0
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 4608
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 4864
-        name: ""
-        size: "1.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5000
-        name: "CVR29SNAP_65"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5001
-        name: "CVR29SnS_65_5000"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5002
-        name: "CVR29SNAP_5"
-        size: "23.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5003
-        name: "CVR29SnS_5_5002"
-        size: "23.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5004
-        name: "CVR29SNAP_3"
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5005
-        name: "CVR29SnS_3_5004"
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5006
-        name: "CVR29SNAP_4"
-        size: "22.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5007
-        name: "CVR29SnS_4_5006"
-        size: "22.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5008
-        name: "CVR29SNAP_58"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
-        data_reduction_share: true
-      - ldev_id: 5009
-        name: "CVR29SnS_58_5008"
-        size: "8.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression"
         data_reduction_share: true
       - ldev_id: 7936
         name: "VSM-888888-Dummy-Vol"
@@ -1461,13 +1188,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 12299
-        name: "JNL_0_AB-CS-HUR-Somerset-Clifton"
-        size: "10.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
       - ldev_id: 12300
         name: "AB-CS-Win2"
         size: "12.00GB"
@@ -1475,13 +1195,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 12301
-        name: "JNL_2_AB-CS-HUR-Clifton-Sommerse"
-        size: "10.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
       - ldev_id: 12354
         name: "CS_Ventura_DS"
         size: "256.00GB"
@@ -1503,76 +1216,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 16384
-        name: "VeeamPR_0042,004_20251127030923"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16385
-        name: "VeeamPR_0042,008_20251201030932"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16386
-        name: "VeeamPR_0042,007_20251203192230"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16388
-        name: "VeeamPR_0042,003_20251206030953"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16390
-        name: "VeeamPR_0042,003_20251205030938"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16391
-        name: "VeeamPR_0042,006_20251203174839"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16396
-        name: "VeeamPR_0042,008_20251204030943"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16397
-        name: "VeeamPR_0042,005_20251208030850"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16398
-        name: "VeeamPR_0042,004_20251207030853"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
-      - ldev_id: 16399
-        name: "VeeamPR_0042,006_20251209030859"
-        size: "256.00GB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "compression_deduplication"
-        data_reduction_share: true
       - ldev_id: 20480
         name: ""
         size: "1.00TB"
@@ -1580,34 +1223,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 20481
-        name: ""
-        size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 20482
-        name: ""
-        size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 20483
-        name: ""
-        size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 20484
-        name: ""
-        size: "1.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
       - ldev_id: 20492
         name: "CS_AB-CS-Win2-S"
         size: "12.00GB"
@@ -1629,13 +1244,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 24592
-        name: ""
-        size: "1.00TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
       - ldev_id: 24593
         name: ""
         size: "1.00TB"
@@ -1643,13 +1251,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 28672
-        name: ""
-        size: "8.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
       - ldev_id: 28673
         name: ""
         size: "8.00TB"
@@ -1657,13 +1258,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 28674
-        name: ""
-        size: "8.00TB"
-        pool_id: 10
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
       - ldev_id: 48640
         name: "CS_sdfsdf"
         size: "25.00GB"
@@ -1678,370 +1272,6 @@
         emulation_type: "OPEN-V-CVS"
         capacity_saving: "compression_deduplication"
         data_reduction_share: true
-      - ldev_id: 49100
-        name: ""
-        size: "6.00TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49101
-        name: ""
-        size: "6.00TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49102
-        name: ""
-        size: "6.00TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49103
-        name: ""
-        size: "6.00TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49104
-        name: ""
-        size: "1.97TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49105
-        name: ""
-        size: "1.97TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49106
-        name: ""
-        size: "1.97TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49107
-        name: ""
-        size: "1.97TB"
-        pool_id: 11
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49108
-        name: ""
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49109
-        name: ""
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49110
-        name: ""
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49111
-        name: ""
-        size: "21.00TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49112
-        name: ""
-        size: "1.97TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49113
-        name: ""
-        size: "1.97TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49114
-        name: ""
-        size: "1.97TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49115
-        name: ""
-        size: "1.97TB"
-        pool_id: 0
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: "disabled"
-        data_reduction_share: none
-      - ldev_id: 49116
-        name: "[AutoConfig]LDEV#49116_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49117
-        name: "[AutoConfig]LDEV#49117_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49118
-        name: "[AutoConfig]LDEV#49118_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49119
-        name: "[AutoConfig]LDEV#49119_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49120
-        name: "[AutoConfig]LDEV#49120_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49121
-        name: "[AutoConfig]LDEV#49121_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49122
-        name: "[AutoConfig]LDEV#49122_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49123
-        name: "[AutoConfig]LDEV#49123_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49124
-        name: "[AutoConfig]LDEV#49124_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49125
-        name: "[AutoConfig]LDEV#49125_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49126
-        name: "[AutoConfig]LDEV#49126_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49127
-        name: "[AutoConfig]LDEV#49127_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49128
-        name: "[AutoConfig]LDEV#49128_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49129
-        name: "[AutoConfig]LDEV#49129_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49130
-        name: "[AutoConfig]LDEV#49130_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49131
-        name: "[AutoConfig]LDEV#49131_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49132
-        name: "[AutoConfig]LDEV#49132_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49133
-        name: "[AutoConfig]LDEV#49133_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49134
-        name: "[AutoConfig]LDEV#49134_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49135
-        name: "[AutoConfig]LDEV#49135_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49136
-        name: "[AutoConfig]LDEV#49136_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49137
-        name: "[AutoConfig]LDEV#49137_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49138
-        name: "[AutoConfig]LDEV#49138_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49139
-        name: "[AutoConfig]LDEV#49139_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49140
-        name: "[AutoConfig]LDEV#49140_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49141
-        name: "[AutoConfig]LDEV#49141_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49142
-        name: "[AutoConfig]LDEV#49142_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49143
-        name: "[AutoConfig]LDEV#49143_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49144
-        name: "[AutoConfig]LDEV#49144_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49145
-        name: "[AutoConfig]LDEV#49145_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49146
-        name: "[AutoConfig]LDEV#49146_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49147
-        name: "[AutoConfig]LDEV#49147_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49148
-        name: "[AutoConfig]LDEV#49148_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49149
-        name: "[AutoConfig]LDEV#49149_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49150
-        name: "[AutoConfig]LDEV#49150_687e1349"
-        size: "3.00TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
-      - ldev_id: 49151
-        name: "[AutoConfig]LDEV#49151_687e1349"
-        size: "1.27TB"
-        pool_id: -1
-        emulation_type: "OPEN-V-CVS"
-        capacity_saving: ""
-        data_reduction_share: none
 
   tasks:
     ####################################################################

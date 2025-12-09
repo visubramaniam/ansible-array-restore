@@ -58,21 +58,24 @@ class StorageProvisioningGenerator:
         return hgs_data
     
     def generate_ldev_playbook(self) -> str:
-        """Generate playbook to create all LDEVs"""
+        """Generate playbook to create all LDEVs that are associated with hostgroups"""
         ldevs = self.extract_ldevs()
         
-        # Build LDEV config list
+        # Build LDEV config list - only include LDEVs with hostgroup associations
         ldev_configs = []
         for ldev in ldevs:
-            ldev_configs.append({
-                'ldev_id': ldev.get('ldev_id'),
-                'name': ldev.get('name'),
-                'size': ldev.get('total_capacity'),
-                'pool_id': ldev.get('pool_id'),
-                'emulation_type': ldev.get('emulation_type'),
-                'capacity_saving': ldev.get('deduplication_compression_mode', 'compression_deduplication'),
-                'data_reduction_share': ldev.get('is_data_reduction_share_enabled', True)
-            })
+            ldev_id = ldev.get('ldev_id')
+            # Only include LDEV if it has associated hostgroups
+            if ldev.get('hostgroups'):
+                ldev_configs.append({
+                    'ldev_id': ldev_id,
+                    'name': ldev.get('name'),
+                    'size': ldev.get('total_capacity'),
+                    'pool_id': ldev.get('pool_id'),
+                    'emulation_type': ldev.get('emulation_type'),
+                    'capacity_saving': ldev.get('deduplication_compression_mode', 'compression_deduplication'),
+                    'data_reduction_share': ldev.get('is_data_reduction_share_enabled', True)
+                })
         
         playbook = f"""---
 ####################################################################
@@ -366,21 +369,24 @@ class StorageProvisioningGenerator:
         return playbook
     
     def generate_combined_workflow(self) -> str:
-        """Generate combined playbook with all three tasks"""
+        """Generate combined playbook with all three tasks - only includes LDEVs with hostgroup associations"""
         self.extract_ldevs()
         self.extract_hostgroups()
         
-        # Build LDEV config
+        # Build LDEV config - only include LDEVs with hostgroup associations
         ldev_configs = []
         for ldev in self.ldevs:
-            ldev_configs.append({
-                'ldev_id': ldev.get('ldev_id'),
-                'name': ldev.get('name'),
-                'size': ldev.get('total_capacity'),
-                'pool_id': ldev.get('pool_id'),
-                'capacity_saving': ldev.get('deduplication_compression_mode', 'compression_deduplication'),
-                'data_reduction_share': ldev.get('is_data_reduction_share_enabled', True)
-            })
+            ldev_id = ldev.get('ldev_id')
+            # Only include LDEV if it has associated hostgroups
+            if ldev.get('hostgroups'):
+                ldev_configs.append({
+                    'ldev_id': ldev_id,
+                    'name': ldev.get('name'),
+                    'size': ldev.get('total_capacity'),
+                    'pool_id': ldev.get('pool_id'),
+                    'capacity_saving': ldev.get('deduplication_compression_mode', 'compression_deduplication'),
+                    'data_reduction_share': ldev.get('is_data_reduction_share_enabled', True)
+                })
         
         # Build hostgroup config
         hg_configs = []
