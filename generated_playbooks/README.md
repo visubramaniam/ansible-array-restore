@@ -186,6 +186,13 @@ ansible-playbook 00_complete_provisioning_workflow.yml --tags=ldev,provision
 ansible-playbook 00_complete_provisioning_workflow.yml --check
 ```
 
+**Note:** The Hitachi VSP Ansible collection modules do not support check mode. When running with `--check`, the storage provisioning tasks will be skipped, but the playbook syntax and variable validation will be verified. This is useful for verifying that:
+- The playbook syntax is correct
+- All variables are properly defined
+- No errors in task definitions occur
+
+To fully test the playbook against actual storage, run without `--check` in a test/staging environment.
+
 ## Variables Override
 
 You can override any variables using `-e` flag:
